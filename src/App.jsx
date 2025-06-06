@@ -23,6 +23,9 @@ const App = () => (
           <Route path="/dashboardvideo" element={<DashboardVideo />} />
           <Route path="/editvideo" element={<EditVideo />} />
           <Route path="/addvideo" element={<AddVideo />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/edittanggal" element={<EditTanggal />} /> 
+          <Route path="/inputarticle" element={<InputArticle />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
