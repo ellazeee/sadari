@@ -11,6 +11,9 @@ import { EditVideo } from "./pages/EditVideo";
 import { AddVideo } from "./pages/AddVideo";
 import { Settings } from "./pages/Settings";
 import { EditTanggal } from "./pages/EditTanggal";
+import { Home } from "./pages/Home";
+import { Sadari } from "./pages/Sadari";
+import { HasilSadari } from "./pages/HasilSadari";
 import { InputArticle } from "./pages/InputArticle";
 
 const queryClient = new QueryClient();
@@ -22,13 +25,16 @@ const App = () => (
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/dashboardarticle" element={<DashboardArticle />} />
-          <Route path="/home" element={<Browser />} />
+          <Route path="/browser" element={<Browser />} />
           <Route path="/dashboardvideo" element={<DashboardVideo />} />
           <Route path="/editvideo" element={<EditVideo />} />
           <Route path="/addvideo" element={<AddVideo />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/edittanggal" element={<EditTanggal />} /> 
           <Route path="/inputarticle" element={<InputArticle />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/sadari" element={<Sadari />} />
+          <Route path="/hasilsadari" element={<HasilSadari />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
