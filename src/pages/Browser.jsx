@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Navbar } from "../components/navbar/navbar";
 import { InformationCard } from "../components/card/info-card";
-import { VideoCard } from "../components/card/video-card";
+import { VideoCard } from "../components/card/video-card-home";
 
 export const Browser = () => {
   const [information] = useState([
