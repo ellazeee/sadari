@@ -9,6 +9,9 @@ import { DashboardArticle } from "./pages/DashboardArticle";
 import { DashboardVideo } from "./pages/DashboardVideo";
 import { EditVideo } from "./pages/EditVideo";
 import { AddVideo } from "./pages/AddVideo";
+import { Settings } from "./pages/Settings";
+import { EditTanggal } from "./pages/EditTanggal";
+import { InputArticle } from "./pages/InputArticle";
 
 const queryClient = new QueryClient();
 

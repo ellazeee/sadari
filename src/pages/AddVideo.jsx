@@ -14,7 +14,6 @@ export const AddVideo = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowToast(true);
-    // Simulasi backend
     setTimeout(() => {
       setShowToast(false);
       navigate("/dashboardvideo");
@@ -32,53 +31,55 @@ export const AddVideo = () => {
       <Sidebar />
       <div className="flex-grow ml-60 p-6">
         <InputSearch />
-        <h1 className="text-2xl font-bold mb-6 mt-4">Tambah Video</h1>
+        <h1 className="text-2xl font-bold text-center text-gray-800 mt-4 mb-6">
+          Tambah Video
+        </h1>
         <form
           onSubmit={handleSubmit}
-          className="bg-white shadow-md rounded-xl p-6 max-w-xl"
+          className="bg-white shadow-md rounded-xl p-6 max-w-3xl mx-auto space-y-4"
         >
-          <div className="mb-4">
-            <label className="block text-gray-700 font-semibold mb-2">
+          <div>
+            <label className="block text-gray-700 font-semibold mb-1">
               Judul Video
             </label>
             <input
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300"
+              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-600"
               required
             />
           </div>
 
-          <div className="mb-4">
-            <label className="block text-gray-700 font-semibold mb-2">
+          <div>
+            <label className="block text-gray-700 font-semibold mb-1">
               Caption
             </label>
             <textarea
               value={caption}
               onChange={(e) => setCaption(e.target.value)}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300"
-              rows="4"
+              className="w-full px-4 py-2 border border-gray-300 rounded resize-none focus:outline-none focus:ring-2 focus:ring-pink-600"
+              rows={5}
               placeholder="Tambahkan caption untuk video ini"
             />
           </div>
 
-          <div className="mb-4">
-            <label className="block text-gray-700 font-semibold mb-2">
+          <div>
+            <label className="block text-gray-700 font-semibold mb-1">
               Upload Video
             </label>
             <input
               type="file"
               accept="video/*"
               onChange={(e) => setVideoFile(e.target.files[0])}
-              className="w-full"
+              className="block w-full text-gray-700"
               required
             />
           </div>
 
           <button
             type="submit"
-            className="bg-pink-500 text-white font-bold px-6 py-2 rounded-lg hover:bg-pink-600 transition duration-200"
+            className="w-full py-3 px-4 font-semibold text-white rounded bg-pink-600 hover:bg-pink-200 focus:outline-none"
           >
             Tambah Video
           </button>
