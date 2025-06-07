@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Sidebar } from "../components/sidebar/sidebar-container.jsx";
-import { InputSearch } from "../components/header/input-search.jsx";
 import { ToastNotification } from "../components/card/ToastNotification.jsx";
 
 export const InputArticle = () => {
@@ -12,37 +11,34 @@ export const InputArticle = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!title || !description || !photo) {
-      // Jika validasi gagal, tampilkan alert atau toast error jika diinginkan
-      return;
-    }
+  // Validasi input
+  if (!title || !description || !photo) {
+    alert("Semua field wajib diisi sebelum mengirimkan artikel.");
+    return;
+  }
 
-    try {
-      const formData = new FormData();
-      formData.append("title", title);
-      formData.append("description", description);
-      formData.append("photo", photo);
+  try {
+    // Simulasi pengiriman data artikel (dummy)
+    console.log("Data artikel yang dikirim (dummy):", {
+      title,
+      description,
+      photoName: photo.name,
+    });
 
-      const response = await fetch("", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Failed to submit article");
-      }
-
+    // Simulasi delay seperti proses request ke server
+    setTimeout(() => {
       setShowToast(true);
       setTimeout(() => {
         navigate("/dashboardarticle");
       }, 2000);
-    } catch (error) {
-      alert(error.message); // Tambahkan custom toast kalau ingin
-    }
-  };
+    }, 1000);
+  } catch (error) {
+    alert("Terjadi kesalahan saat mengirim data. Silakan coba lagi.");
+  }
+};
+
 
   const handleBack = () => {
     navigate("/dashboardarticle");
@@ -58,7 +54,6 @@ export const InputArticle = () => {
       )}
       <Sidebar />
       <div className="flex-grow ml-60 p-6">
-        <InputSearch />
         <button
           onClick={handleBack}
           className="text-gray-800 text-3xl mb-2 hover:text-pink-500 transition"

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Sidebar } from "../components/sidebar/sidebar-container.jsx";
-import { InputSearch } from "../components/header/input-search.jsx";
 import { useNavigate } from "react-router-dom";
 import { ToastNotification } from "../components/card/ToastNotification.jsx";
 
@@ -11,13 +10,32 @@ export const AddVideo = () => {
   const [showToast, setShowToast] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setShowToast(true);
-    setTimeout(() => {
-      setShowToast(false);
-      navigate("/dashboardvideo");
-    }, 2000);
+
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("description", caption);
+    formData.append("video", videoFile);
+
+    try {
+      const res = await fetch("https://backend-sadari.vercel.app/videoAdmin", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) {
+        throw new Error("Gagal upload video");
+      }
+
+      setShowToast(true);
+      setTimeout(() => {
+        setShowToast(false);
+        navigate("/dashboardvideo");
+      }, 2000);
+    } catch (error) {
+      alert("Upload gagal: " + error.message);
+    }
   };
 
   return (
@@ -30,7 +48,6 @@ export const AddVideo = () => {
       )}
       <Sidebar />
       <div className="flex-grow ml-60 p-6">
-        <InputSearch />
         <h1 className="text-2xl font-bold text-center text-gray-800 mt-4 mb-6">
           Tambah Video
         </h1>

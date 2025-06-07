@@ -7,14 +7,21 @@ import { FormChangePassword } from "../components/settings/form-change-password"
 export const Settings = () => {
   const [selectedForm, setSelectedForm] = useState("editProfile");
 
+  // Dummy data profil
+  const dummyProfile = {
+    name: "Elvira",
+    email: "elvira@gmail.com",
+    phone: "08123456789",
+  };
+
   const renderForm = () => {
     switch (selectedForm) {
       case "editProfile":
-        return <FormEditProfile />;
+        return <FormEditProfile profile={dummyProfile} />;
       case "changePassword":
         return <FormChangePassword />;
       default:
-        return <FormEditProfile />;
+        return <FormEditProfile profile={dummyProfile} />;
     }
   };
 

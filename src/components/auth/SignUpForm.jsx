@@ -8,28 +8,51 @@ export const SignUpForm = () => {
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // api buat registrasi
-    // Simulate an API call
 
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
+
     if (password.length < 6) {
       alert("Password must be at least 6 characters long!");
       return;
     }
 
-    setTimeout(() => {
-      console.log("User registered with email:", email);
-      // Redirect to the next step or show a success message
+    try {
+      const response = await fetch(
+        "https://backend-sadari.vercel.app/admin/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username,
+            email,
+            password,
+            confirmPassword,
+          }),
+        }
+      );
 
-      navigate("/");
-    }, 1000);
-    console.log("Sign up with:", email);
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log("Registration successful:", data);
+        alert(data.message); // "Registrasi berhasil!"
+        navigate("/"); // redirect ke login/home
+      } else {
+        alert(data.message || "Registrasi gagal!");
+      }
+    } catch (err) {
+      console.error("Error:", err);
+      alert("Terjadi kesalahan jaringan!");
+    }
   };
+  
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-[#E1004E] p-4">
@@ -55,6 +78,7 @@ export const SignUpForm = () => {
             placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            autoComplete="username"
             className="w-full px-4 py-2 rounded-md border border-white bg-transparent text-white placeholder:text-white/80"
             required
           />
@@ -63,6 +87,7 @@ export const SignUpForm = () => {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            autoComplete="new-password"
             className="w-full px-4 py-2 rounded-md border border-white bg-transparent text-white placeholder:text-white/80"
             required
           />
@@ -71,6 +96,7 @@ export const SignUpForm = () => {
             placeholder="Confirm Password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            autoComplete="new-password"
             className="w-full px-4 py-2 rounded-md border border-white bg-transparent text-white placeholder:text-white/80"
             required
           />

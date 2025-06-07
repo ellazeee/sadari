@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { InputSearch } from "../components/header/input-search.jsx";
 import { Sidebar } from "../components/sidebar/sidebar-container.jsx";
 import { VideoCard } from "../components/card/video-card.jsx";
 import { ToastNotification } from "../components/card/ToastNotification.jsx";
@@ -83,7 +82,6 @@ export const DashboardVideo = () => {
           </div>
         )}
 
-        <InputSearch />
         <div className="flex justify-between items-center mt-4 mb-6">
           <h1 className="text-2xl font-bold">VIDEOS</h1>
           <button

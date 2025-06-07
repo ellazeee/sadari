@@ -1,6 +1,6 @@
 import React from "react";
 
-export const ArticleCard = ({ title, img, description, onDelete }) => {
+export const ArticleCard = ({ title, img, description, onDelete, onEdit }) => {
   return (
     <div className= "bg-white border rounded-lg shadow-md p-4">
       <figure>
@@ -16,7 +16,8 @@ export const ArticleCard = ({ title, img, description, onDelete }) => {
         <p className="text-start text-gray-700 text-xs line-clamp-3">
             {description}</p>
         <div className="flex justify-end mt-2 gap-2">
-          <button className="bg-pink-600 text-white text-xs py-1 px-4 rounded">
+          <button onClick={onEdit} 
+          className="bg-pink-600 text-white text-xs py-1 px-4 rounded">
             Edit
           </button>
           <button onClick={onDelete} 
