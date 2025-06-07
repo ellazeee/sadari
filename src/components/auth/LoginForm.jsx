@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../assets/logo.png";
+import Logo from "../../assets/Logo.png";
 
 export const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -49,7 +49,7 @@ export const LoginForm = () => {
       <div className="w-full max-w-sm space-y-6">
         <div className="flex justify-center">
           <img
-            src={logo}
+            src={Logo}
             alt="Sadari Logo"
             className="w-40 h-40 object-contain"
           />
